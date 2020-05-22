@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Dumb Charades</string>
+    <string name="play">Play</string>
+    <string name="guess_word_text">The word is..</string>
+    <string name="title">Get ready to act the word.</string>
+    <string name="word">word</string>
+    <string name="skip">Skip</string>
+    <string name="got_it">Got It</string>
+    <string name="end_game">End</string>
+    <string name="restart">Restart</string>
+    <string name="your_score">You Scored</string>
+
+
+    <string name="scoreFormat">Current Score : %d</string>
+    <string name="timeFormat">Time left : %s</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">Add</string>
+    <string name="clear_all">Clear All</string>
+    <string name="heading_words_list"><![CDATA[<H3>Words List</H3>]]></string>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="scoreViewModel"
+            type="com.development.dumbcharades.viewmodels.ScoreViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ScoreFragment">
+
+        <TextView
+            android:id="@+id/scoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/score"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintVertical_bias=".35"/>
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scoreText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:textStyle="bold"
+            android:textSize="80sp"
+            android:textColor="@color/colorPrimary"
+            android:text="@{String.valueOf(scoreViewModel.score)}"/>
+
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/_20dp"
+            android:text="@string/restart"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/colorPrimary"
+            android:onClick="@{() -> scoreViewModel.onRestartGame()}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

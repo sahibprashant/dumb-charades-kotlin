@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.development.dumbcharades.fragments.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/anim_enter"
+            app:exitAnim="@anim/anim_exit"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/anim_pop_enter"
+            app:popExitAnim="@anim/anim_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.development.dumbcharades.fragments.GameFragment"
+        android:label="GameFragment"
+        tools:layout="@layout/fragment_game">
+        <action
+            android:id="@+id/action_gameFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment"
+            app:enterAnim="@anim/anim_enter"
+            app:exitAnim="@anim/anim_exit"
+            app:popEnterAnim="@anim/anim_pop_enter"
+            app:popExitAnim="@anim/anim_pop_exit"
+            app:popUpTo="@+id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.development.dumbcharades.fragments.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_gameFragment"
+            app:destination="@id/gameFragment"
+            app:enterAnim="@anim/anim_pop_enter"
+            app:exitAnim="@anim/anim_pop_exit"
+            app:popEnterAnim="@anim/anim_pop_enter"
+            app:popExitAnim="@anim/anim_pop_exit"
+            app:popUpTo="@+id/mainFragment" />
+        <argument
+            android:name="score"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/wordDatabase"
+        android:name="com.development.dumbcharades.fragments.HandleWordsFragment"
+        android:label="fragment_handle_words"
+        tools:layout="@layout/fragment_handle_words" />
+
+</navigation>

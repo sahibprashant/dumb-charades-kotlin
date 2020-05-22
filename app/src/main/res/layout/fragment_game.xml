@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="gameViewModel"
+            type="com.development.dumbcharades.viewmodels.GameViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/guess_word_text"
+            android:textSize="@dimen/_16sp"
+            app:layout_constraintBottom_toTopOf="@+id/word"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias=".4"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{gameViewModel.currentWord}"
+            android:textSize="@dimen/_30sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="@dimen/_20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/timeFormat(gameViewModel.leftTimeString)}"
+            app:layout_constraintBottom_toTopOf="@+id/score"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/word"
+            app:layout_constraintVertical_bias=".8"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5dp"
+            android:text="@{@string/scoreFormat(gameViewModel.score)}"
+            app:layout_constraintBottom_toTopOf="@id/gotIt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time" />
+
+
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skip"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/gotIt"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="@{() -> gameViewModel.onSkip()}"/>
+
+        <Button
+            android:id="@+id/gotIt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/got_it"
+            app:layout_constraintStart_toEndOf="@+id/skip"
+            app:layout_constraintEnd_toStartOf="@+id/endGame"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:onClick="@{() -> gameViewModel.onCorrect()}"/>
+
+        <Button
+            android:id="@+id/endGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_game"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gotIt"
+            android:onClick="@{() -> gameViewModel.onEndGame()}"/>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="@dimen/_20dp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+
